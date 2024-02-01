@@ -232,9 +232,10 @@ app.get('/history/:id', (req, res) => {
 });
 
 // connect to Redis
+var redisHost = process.env.REDIS_HOST || 'redis'
+
 var redisClient = redis.createClient({
-    host: process.env.REDIS_HOST || 'redis',
-    PORT: 6379
+    host: redisHost
 });
 
 redisClient.on('error', (e) => {
